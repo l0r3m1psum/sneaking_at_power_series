@@ -5,8 +5,10 @@ inspired by Power Serius another work of M. Douglas Mcllroy.
 
 Sources:
 https://swtch.com/~rsc/thread/squint.pdf
+https://www.cs.dartmouth.edu/~doug/music.ps.gz
+https://www.cs.dartmouth.edu/~doug/pearl.ps.gz
 https://www.cs.dartmouth.edu/~doug/powser.html
-https://en.wikipedia.org/wiki/Power_series"""
+Knuth Vol. 2"""
 
 from itertools import  tee
 
