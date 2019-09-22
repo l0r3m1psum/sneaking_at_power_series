@@ -10,8 +10,6 @@ https://en.wikipedia.org/wiki/Power_series"""
 
 from itertools import  tee
 
-# TODO: fare le prove con sin, cos, sinh, cosh, exp, ecc per la precisione dei numeri
-
 # F+G = f+g + F'+G'
 def add(F, G):
 	"""Adds two power series."""
