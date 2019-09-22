@@ -52,6 +52,18 @@ def div(F, G):
 	yield next(F) / g
 	yield from mulc(1/g, sub(F, mul(div(F1, G1), G)))
 
+def deriv(F):
+	"""Derivate a power serie."""
+	_ = next(F)
+	for n, a in enumerate(F, 1):
+		yield n * a
+
+def integr(F, const):
+	"""Integrate a power serie."""
+	yield const
+	for n, a in enumerate(F, 1):
+		yield 1/n * a
+
 # TODO:
 # https://en.wikipedia.org/wiki/Binomial_theorem
 def exp(F, const):
@@ -72,21 +84,10 @@ def comp(F, G):
 	# yield next(F)
 	# yield from comp(F, G)
 
+# TODO:
 def recip(F):
 	"""Reciprocal of a power serie."""
 	pass
-
-def deriv(F):
-	"""Derivate a power serie."""
-	_ = next(F)
-	for n, a in enumerate(F, 1):
-		yield n * a
-
-def integr(F, const):
-	"""Integrate a power serie."""
-	yield const
-	for n, a in enumerate(F, 1):
-		yield 1/n * a
 
 if __name__ == '__main__':
 	# from sys import getrecursionlimit, setrecursionlimit
@@ -96,4 +97,3 @@ if __name__ == '__main__':
 	# lol 14 is the max, after that you hit RecursionError
 	print(list(islice(div(count(), repeat(2)), 14)))
 	# print(list(islice(div(count(), repeat(2)), 25)))
-
