@@ -97,3 +97,5 @@ if __name__ == '__main__':
 	# lol 14 is the max, after that you hit RecursionError
 	print(list(islice(div(count(), repeat(2)), 14)))
 	# print(list(islice(div(count(), repeat(2)), 25)))
+
+	
