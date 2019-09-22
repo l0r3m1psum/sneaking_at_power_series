@@ -98,4 +98,3 @@ if __name__ == '__main__':
 	print(list(islice(div(count(), repeat(2)), 14)))
 	# print(list(islice(div(count(), repeat(2)), 25)))
 
-	
