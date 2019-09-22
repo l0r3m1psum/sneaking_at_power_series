@@ -12,5 +12,8 @@ be done for sub().
 https://docs.python.org/3/library/trace.html
 https://pymotw.com/3/trace/
 
+Add sin/cos = tan identity to the tests and similar functions with
+the Taylor series.
+
 http://profs.sci.univr.it/~zorzim/PresentazioniBeamer.pdf
 http://tug.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf
