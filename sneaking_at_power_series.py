@@ -10,7 +10,7 @@ https://www.cs.dartmouth.edu/~doug/pearl.ps.gz
 https://www.cs.dartmouth.edu/~doug/powser.html
 Knuth Vol. 2"""
 
-from itertools import  tee
+from itertools import  tee, count
 
 # F+G = f+g + F'+G'
 def add(F, G):
@@ -88,6 +88,18 @@ def comp(F, G):
 def recip(F):
 	"""Reciprocal of a power serie."""
 	pass
+
+def _fact(n):
+	res = 1
+	for i in range(1, n+1):
+		res *= i
+	return res
+
+def sin():
+	yield from ((-1)**n/_fact(2*n-1) if n%2 != 0 else 0 for n in count())
+
+def cos():
+	yield from ((-1)**n/(2*n) if n%2 == 0 else 0 for n in count())
 
 if __name__ == '__main__':
 	# from sys import getrecursionlimit, setrecursionlimit
