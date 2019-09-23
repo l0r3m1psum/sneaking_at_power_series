@@ -96,6 +96,20 @@ def _fact(n):
 		res *= i
 	return res
 
+def _binomial(n, k):
+	return Fraction(_fact(n), _fact(k)*_fact(n-k))
+
+# https://www.bernoulli.org
+def _bernoulli(n):
+	res = 0
+	for k in range(n+1):
+		fst_factor = Fraction(1, k+1)
+		snd_factor = Fraction(0)
+		for v in range(k+1):
+			snd_factor += (-1)**v * _binomial(k, v) * v**n
+		res += fst_factor*snd_factor
+	return res
+
 def sin():
 	n = 0
 	for i in count():
@@ -114,18 +128,18 @@ def cos():
 		else:
 			yield 0
 
+def tan():
+	n = 1
+	for i in count():
+		if i%2 != 0:
+			yield Fraction(_bernoulli(2*n) * (-4)**n * (1-4**n), _fact(2*n))
+			n += 1
+		else:
+			yield 0
+
 if __name__ == '__main__':
-	# from sys import getrecursionlimit, setrecursionlimit
-	# print(getrecursionlimit()) # 1_000
-	# setrecursionlimit(10_000)
 	from itertools import islice, count, repeat
 	from fractions import Fraction
 	Fraction.__repr__ = lambda self: "0" if self.numerator == 0 else \
 	                                 f"{self.numerator}" if self.denominator == 1 else \
 	                                 f"{self.numerator}/{self.denominator}"
-	# lol 14 is the max, after that you hit RecursionError
-	print(list(islice(div(map(Fraction, count()),
-	                      map(Fraction, repeat(2))),
-	           14)))
-	# print(list(islice(div(count(), repeat(2)), 25)))
-

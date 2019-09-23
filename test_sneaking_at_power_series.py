@@ -88,5 +88,11 @@ class Tests(unittest.TestCase):
 		self.assertEqual(list(islice(deriv(cos()), 10)),
 		                 list(islice(neg(sin()), 10)))
 
+	def test_tan(self):
+		self.assertEqual(list(islice(div(sin(), cos()), 10)),
+		                 list(islice(tan(), 10)))
+		self.assertEqual(list(islice(mul(tan(), cos()), 10)),
+		                 list(islice(sin(), 10)))
+
 if __name__ == '__main__':
 	unittest.main()
