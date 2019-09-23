@@ -45,6 +45,7 @@ def mul(F, G):
 
 
 # Q = F/G = f/g + (1/g)*(F' - Q*G')
+# this assumes that all coefficient of G are different from 0
 def div(F, G):
 	"""Divides two power series."""
 	F, F1 = tee(F)
