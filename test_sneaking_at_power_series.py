@@ -84,10 +84,9 @@ class Tests(unittest.TestCase):
 		self.assertEqual(list(islice(deriv(sin()), 10)),
 		                 list(islice(cos(), 10)))
 
-	# FIXME: assertAlmostEqual on all element of the list or use Fraction()
-	# def test_cos(self):
-	# 	self.assertEqual(list(islice(deriv(cos()), 10)),
-	# 	                 list(islice(neg(sin()), 10)))
+	def test_cos(self):
+		self.assertEqual(list(islice(deriv(cos()), 10)),
+		                 list(islice(neg(sin()), 10)))
 
 if __name__ == '__main__':
 	unittest.main()
