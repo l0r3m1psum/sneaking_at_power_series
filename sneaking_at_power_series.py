@@ -104,7 +104,6 @@ def sin():
 		else:
 			yield 0
 
-
 def cos():
 	n = 0
 	for i in count():
@@ -119,7 +118,9 @@ if __name__ == '__main__':
 	# print(getrecursionlimit()) # 1_000
 	# setrecursionlimit(10_000)
 	from itertools import islice, count, repeat
+	from fractions import Fraction
+	Fraction.__repr__ = lambda self: f"{self.numerator}/{self.denominator}"
 	# lol 14 is the max, after that you hit RecursionError
-	print(list(islice(div(count(), repeat(2)), 14)))
+	print(list(islice(div(map(Fraction, count()), map(Fraction, repeat(2))), 14)))
 	# print(list(islice(div(count(), repeat(2)), 25)))
 
