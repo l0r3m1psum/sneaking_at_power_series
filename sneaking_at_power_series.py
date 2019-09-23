@@ -95,9 +95,7 @@ def _fact(n):
 		res *= i
 	return res
 
-# TODO: fix sin and cos
 def sin():
-	# yield from ((-1)**n/_fact(2*n-1) if n%2 != 0 else 0 for n in count())
 	n = 0
 	for i in count():
 		if i%2 != 0:
@@ -108,7 +106,6 @@ def sin():
 
 
 def cos():
-	# yield from ((-1)**n/_fact(2*n) if n%2 == 0 else 0 for n in count())
 	n = 0
 	for i in count():
 		if i%2 == 0:
