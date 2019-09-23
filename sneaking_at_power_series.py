@@ -138,8 +138,6 @@ def tan():
 			yield 0
 
 if __name__ == '__main__':
-	from itertools import islice, count, repeat
-	from fractions import Fraction
 	Fraction.__repr__ = lambda self: "0" if self.numerator == 0 else \
 	                                 f"{self.numerator}" if self.denominator == 1 else \
 	                                 f"{self.numerator}/{self.denominator}"
