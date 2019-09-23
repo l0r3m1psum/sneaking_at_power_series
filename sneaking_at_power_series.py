@@ -119,8 +119,12 @@ if __name__ == '__main__':
 	# setrecursionlimit(10_000)
 	from itertools import islice, count, repeat
 	from fractions import Fraction
-	Fraction.__repr__ = lambda self: f"{self.numerator}/{self.denominator}"
+	Fraction.__repr__ = lambda self: "0" if self.numerator == 0 else \
+	                                 f"{self.numerator}" if self.denominator == 1 else \
+	                                 f"{self.numerator}/{self.denominator}"
 	# lol 14 is the max, after that you hit RecursionError
-	print(list(islice(div(map(Fraction, count()), map(Fraction, repeat(2))), 14)))
+	print(list(islice(div(map(Fraction, count()),
+	                      map(Fraction, repeat(2))),
+	           14)))
 	# print(list(islice(div(count(), repeat(2)), 25)))
 
