@@ -11,6 +11,7 @@ https://www.cs.dartmouth.edu/~doug/powser.html
 Knuth Vol. 2"""
 
 from itertools import  tee, count
+from fractions import Fraction
 
 # F+G = f+g + F'+G'
 def add(F, G):
@@ -99,7 +100,7 @@ def sin():
 	n = 0
 	for i in count():
 		if i%2 != 0:
-			yield (-1)**n/_fact(2*n+1)
+			yield Fraction((-1)**n, _fact(2*n+1))
 			n += 1
 		else:
 			yield 0
@@ -108,7 +109,7 @@ def cos():
 	n = 0
 	for i in count():
 		if i%2 == 0:
-			yield (-1)**n/_fact(2*n)
+			yield Fraction((-1)**n, _fact(2*n))
 			n += 1
 		else:
 			yield 0
