@@ -30,6 +30,7 @@ def sub(F, G):
 	"""Subtracts two power series."""
 	yield from add(F, neg(G))
 
+# in const == 0 return 0?
 def mulc(const, F):
 	"""Multiply a power serie with a constant."""
 	yield const*next(F)
@@ -139,6 +140,8 @@ def tan():
 			yield 0
 
 if __name__ == '__main__':
+	from itertools import islice
 	Fraction.__repr__ = lambda self: "0" if self.numerator == 0 else \
 	                                 f"{self.numerator}" if self.denominator == 1 else \
 	                                 f"{self.numerator}/{self.denominator}"
+	print(list(islice(div(sin(), cos()), 10)))
