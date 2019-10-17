@@ -49,11 +49,10 @@ def mul(F, G):
 # this assumes that all coefficient of G are different from 0
 def div(F, G):
 	"""Divides two power series."""
-	F, F1 = tee(F)
 	G, G1 = tee(G)
-	g = next(G)
-	yield next(F) / g
-	yield from mulc(1/g, sub(F, mul(div(F1, G1), G)))
+	q = next(F) / next(G)
+	yield q
+	yield from div(sub(F, mulc(q, G)), G1)
 
 def deriv(F):
 	"""Derivate a power serie."""
