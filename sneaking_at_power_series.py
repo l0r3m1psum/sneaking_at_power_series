@@ -61,31 +61,28 @@ def deriv(F):
 	for n, a in enumerate(F, 1):
 		yield n * a
 
+# TODO: add Fraction
 def integr(F, const):
 	"""Integrate a power serie."""
 	yield const
 	for n, a in enumerate(F, 1):
 		yield 1/n * a
 
-# TODO:
+# TODO: i don't even know if this op makes sense
 # https://en.wikipedia.org/wiki/Binomial_theorem
 def exp(F, const):
 	"""Elevate a power serie to a given constant."""
 	pass
 
-# TODO:
-# F(G) = f + G'*F'(G)
 # F(G) = f + g*F' + G'*F'(G)
 # this assumes g to be 0
+# F(G) = f + G'*F'(G)
 def comp(F, G):
 	"""Composes two power series."""
 	G, G1 = tee(G)
 	yield next(F)
 	_ = next(G)
 	yield from mul(G, comp(F, G1))
-	# F(G) = f + F'(G)
-	# yield next(F)
-	# yield from comp(F, G)
 
 # TODO:
 def recip(F):
