@@ -30,7 +30,6 @@ def sub(F, G):
 	"""Subtracts two power series."""
 	yield from add(F, neg(G))
 
-# in const == 0 return 0?
 def mulc(const, F):
 	"""Multiply a power serie with a constant."""
 	yield const*next(F)
