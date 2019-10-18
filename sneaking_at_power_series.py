@@ -45,8 +45,8 @@ def mul(F, G):
 	yield from add(mulc(f, G), mul(F, G1))
 
 
-# Q = F/G = f/g + (1/g)*(F' - Q*G')
-# this assumes that all coefficient of G are different from 0
+# Q = F/G = f/g + (F' - (f/g)G')/G
+# the firs coefficent of G must be zero!
 def div(F, G):
 	"""Divides two power series."""
 	G, G1 = tee(G)
@@ -66,12 +66,6 @@ def integr(F, const):
 	yield const
 	for n, a in enumerate(F, 1):
 		yield 1/n * a
-
-# TODO: i don't even know if this op makes sense
-# https://en.wikipedia.org/wiki/Binomial_theorem
-def exp(F, const):
-	"""Elevate a power serie to a given constant."""
-	pass
 
 # F(G) = f + g*F' + G'*F'(G)
 # this assumes g to be 0
@@ -141,3 +135,7 @@ if __name__ == '__main__':
 	                                 f"{self.numerator}" if self.denominator == 1 else \
 	                                 f"{self.numerator}/{self.denominator}"
 	print(list(islice(div(sin(), cos()), 10)))
+	s = sin()
+	_ = next(s) # should skip until a non zero is found
+	# [1, 0, -1/3, 0, -1/45, 0, -2/945, 0, -1/4725, 0]
+	print(list(islice(div(cos(), s), 10)))
