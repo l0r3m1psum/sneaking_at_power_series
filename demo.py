@@ -1,3 +1,8 @@
+""" Demo.
+
+This modules create setup things for a demonstration of the program.
+"""
+
 from itertools import islice
 from fractions import Fraction
 
