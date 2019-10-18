@@ -10,8 +10,7 @@ https://www.cs.dartmouth.edu/~doug/pearl.ps.gz
 https://www.cs.dartmouth.edu/~doug/powser.html
 Knuth Vol. 2"""
 
-from itertools import  tee, count
-from fractions import Fraction
+from itertools import tee
 
 # F+G = f+g + F'+G'
 def add(F, G):
@@ -81,62 +80,3 @@ def recip(F):
 	"""Reciprocal of a power serie."""
 	pass
 
-def _fact(n):
-	res = 1
-	for i in range(1, n+1):
-		res *= i
-	return res
-
-def _binomial(n, k):
-	return Fraction(_fact(n), _fact(k)*_fact(n-k))
-
-# https://www.bernoulli.org
-def _bernoulli(n):
-	res = 0
-	for k in range(n+1):
-		fst_factor = Fraction(1, k+1)
-		snd_factor = Fraction(0)
-		for v in range(k+1):
-			snd_factor += (-1)**v * _binomial(k, v) * v**n
-		res += fst_factor*snd_factor
-	return res
-
-def sin():
-	n = 0
-	for i in count():
-		if i%2 != 0:
-			yield Fraction((-1)**n, _fact(2*n+1))
-			n += 1
-		else:
-			yield 0
-
-def cos():
-	n = 0
-	for i in count():
-		if i%2 == 0:
-			yield Fraction((-1)**n, _fact(2*n))
-			n += 1
-		else:
-			yield 0
-
-def tan():
-	n = 1
-	for i in count():
-		if i%2 != 0:
-			yield Fraction(_bernoulli(2*n) * (-4)**n * (1-4**n), _fact(2*n))
-			n += 1
-		else:
-			yield 0
-
-if __name__ == '__main__':
-	from itertools import islice
-	Fraction.__repr__ = lambda self: "0" if self.numerator == 0 else \
-	                                 f"{self.numerator}" if self.denominator == 1 else \
-	                                 f"{self.numerator}/{self.denominator}"
-	print(list(islice(div(sin(), cos()), 10)))
-	s = sin()
-	_ = next(s) # should skip until a non zero is found
-	# [1, 0, -1/3, 0, -1/45, 0, -2/945, 0, -1/4725, 0]
-	print(list(islice(div(cos(), s), 10)))
-	def take(n, it):
-		return tuple(islice(it, n))
