@@ -139,3 +139,5 @@ if __name__ == '__main__':
 	_ = next(s) # should skip until a non zero is found
 	# [1, 0, -1/3, 0, -1/45, 0, -2/945, 0, -1/4725, 0]
 	print(list(islice(div(cos(), s), 10)))
+	def take(n, it):
+		return tuple(islice(it, n))
