@@ -1,3 +1,8 @@
+"""Known Series.
+
+This module contains known Taylor series of functions.
+"""
+
 from fractions import Fraction
 from itertools import count
 
