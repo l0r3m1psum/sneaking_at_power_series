@@ -55,10 +55,17 @@ def tan():
 
 # FIXME
 def cot():
+	yield 1
 	n = 1
-	for i in count(-1):
+	for i in count():
 		if i%2 != 0:
 			yield -Fraction(2**(2*n)*_bernoulli(n), _fact(2*n))
 			n += 1
 		else:
 			yield 0
+
+if __name__ == '__main__':
+	c = cot()
+
+	for i in range(10):
+		print(next(c))
