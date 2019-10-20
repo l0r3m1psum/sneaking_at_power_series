@@ -1,7 +1,7 @@
 import unittest
+from itertools import islice, count, repeat
 from sneaking_at_power_series import *
 from known_series import *
-from itertools import islice, count, repeat
 
 class Tests(unittest.TestCase):
 
