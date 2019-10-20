@@ -1,6 +1,6 @@
 """ Demo.
 
-This modules create setup things for a demonstration of the program.
+This modules setup things for a demonstration of the program.
 """
 
 from itertools import islice
