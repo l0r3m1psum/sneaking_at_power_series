@@ -1,0 +1,4 @@
+* implement recip()
+* implement cot()
+* add test for comp()
+* use a better notation for G, G1
